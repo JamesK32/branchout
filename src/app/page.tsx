@@ -86,9 +86,23 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/Logo Full.png" alt="BranchOut" style={{ height: '40px', width: 'auto' }} />
+              <img 
+                src="/Logo Full.png" 
+                alt="BranchOut" 
+                style={{ height: '40px', width: 'auto' }}
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <span className="text-xl font-bold text-green-600 hidden">BranchOut</span>
             </div>
-            <button className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors">
+            <button 
+              className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors"
+              style={{ backgroundColor: '#167a5f' }}
+            >
               Get Started
             </button>
           </div>
@@ -108,7 +122,8 @@ export default function Home() {
                 maxWidth: '700px',
                 display: 'inline-block',
                 whiteSpace: 'nowrap',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                color: '#167a5f'
               }}
             >
               {rotatingWords[currentWordIndex]}
@@ -231,7 +246,8 @@ export default function Home() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 bg-green-600 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-green-700 hover:scale-105 transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full py-4 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              style={{ backgroundColor: '#167a5f' }}
             >
               {isSubmitting ? 'Joining...' : 'Join Waitlist'}
             </button>
