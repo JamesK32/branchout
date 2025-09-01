@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 // SpotlightCard Component
 interface SpotlightCardProps {
@@ -303,7 +303,7 @@ const BranchOutApp = () => {
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [isTyping, setIsTyping] = useState(true);
 
-    const rotatingWords = [
+    const rotatingWords = useMemo(() => [
       "stranger",
       "buddy",
       "friend",
@@ -335,7 +335,7 @@ const BranchOutApp = () => {
       "karaoke buddy",
       "intramural teammate",
       "familiar stranger"
-    ];
+    ], []);
 
     useEffect(() => {
       const currentWord = rotatingWords[currentWordIndex];
@@ -406,7 +406,7 @@ const BranchOutApp = () => {
                 </div>
               </h1>
               <p className="text-lg text-gray-600 max-w-md mx-auto leading-relaxed mb-8">
-                Join intimate dinners with 4-5 BC students you've never met. 
+                Join intimate dinners with 4-5 BC students you&apos;ve never met. 
                 Your next best friend could be a stranger.
               </p>
             </div>
