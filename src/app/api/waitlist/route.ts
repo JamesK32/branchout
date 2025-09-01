@@ -35,6 +35,15 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Waitlist submission error:', error);
+    
+    // Check if it's a Supabase configuration error
+    if (error instanceof Error && error.message.includes('Supabase client not initialized')) {
+      return NextResponse.json(
+        { error: 'Database not configured - please try again later' },
+        { status: 503 }
+      );
+    }
+    
     return NextResponse.json(
       { error: 'Failed to join waitlist' },
       { status: 500 }
@@ -48,6 +57,12 @@ export async function GET() {
     return NextResponse.json({ count });
   } catch (error) {
     console.error('Error getting waitlist count:', error);
+    
+    // Check if it's a Supabase configuration error
+    if (error instanceof Error && error.message.includes('Supabase client not initialized')) {
+      return NextResponse.json({ count: 0 });
+    }
+    
     return NextResponse.json(
       { error: 'Failed to get waitlist count' },
       { status: 500 }
