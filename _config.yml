@@ -1,0 +1,7 @@
+title: BranchOut
+description: Capture Every Connection
+url: "https://jamesk32.github.io"
+baseurl: "/branchout"
+
+# Remove .html from URLs
+permalink: pretty
