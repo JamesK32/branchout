@@ -47,8 +47,14 @@
 
     // Resize canvas
     function resizeCanvas() {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        if (canvas.width !== width || canvas.height !== height) {
+            canvas.width = width;
+            canvas.height = height;
+            return true;
+        }
+        return false;
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
