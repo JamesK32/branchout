@@ -2,6 +2,8 @@
 (function() {
     'use strict';
 
+    console.log('Fluid simulation initializing...');
+
     // Configuration
     const config = {
         SIM_RESOLUTION: 128,
@@ -78,6 +80,7 @@
         console.warn('WebGL not supported');
         return;
     }
+    console.log('WebGL context obtained, isWebGL2:', isWebGL2);
 
     let halfFloat, supportLinearFiltering;
     if (isWebGL2) {
@@ -94,6 +97,12 @@
     const formatRGBA = getSupportedFormat(gl.RGBA16F || gl.RGBA, gl.RGBA, halfFloatTexType);
     const formatRG = getSupportedFormat(gl.RG16F || gl.RG, gl.RG, halfFloatTexType);
     const formatR = getSupportedFormat(gl.R16F || gl.RED, gl.RED, halfFloatTexType);
+
+    if (!formatRGBA || !formatRG || !formatR) {
+        console.warn('Required texture formats not supported', { formatRGBA, formatRG, formatR });
+        return;
+    }
+    console.log('Texture formats supported');
 
     function getSupportedFormat(internalFormat, format, type) {
         if (!supportRenderTextureFormat(internalFormat, format, type)) {
@@ -555,6 +564,7 @@
     }
 
     initFramebuffers();
+    console.log('Framebuffers initialized');
 
     // Update colors
     function updateColors(dt) {
@@ -820,5 +830,6 @@
     multipleSplats(Math.floor(Math.random() * 5) + 3);
 
     // Start animation
+    console.log('Starting fluid animation loop');
     update();
 })();
