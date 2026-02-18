@@ -112,161 +112,85 @@ nav {
     overflow: hidden;
 }
 
-/* Display Cards - Stacked Effect */
-.display-cards {
-    display: grid;
-    grid-template-areas: "stack";
-    place-items: center;
-    max-width: 600px;
+/* Social Logos Inline */
+.social-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    max-width: 900px;
     margin: 0 auto 4rem;
     padding: 2rem 0;
 }
 
-.display-card {
-    grid-area: stack;
+.social-logo {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 320px;
-    height: 140px;
-    padding: 1.25rem 1.5rem;
-    background: rgba(30, 30, 30, 0.9);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    transform: skewY(-8deg);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-.display-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 16px;
-    transition: opacity 0.5s;
-}
-
-.display-card::after {
-    content: '';
-    position: absolute;
-    right: -4px;
-    top: -5%;
-    height: 110%;
-    width: 280px;
-    background: linear-gradient(to left, #0a0a0a, transparent);
-    pointer-events: none;
-}
-
-.card-1 {
-    transform: skewY(-8deg) translateX(0) translateY(0);
-    z-index: 1;
-    filter: grayscale(100%);
-}
-
-.card-2 {
-    transform: skewY(-8deg) translateX(50px) translateY(40px);
-    z-index: 2;
-    filter: grayscale(100%);
-}
-
-.card-3 {
-    transform: skewY(-8deg) translateX(100px) translateY(80px);
-    z-index: 3;
-    filter: grayscale(0%);
-}
-
-.card-3::before {
-    opacity: 0;
-}
-
-.display-card:hover {
-    filter: grayscale(0%);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.display-card:hover::before {
-    opacity: 0;
-}
-
-.card-1:hover {
-    transform: skewY(-8deg) translateX(0) translateY(-40px);
-}
-
-.card-2:hover {
-    transform: skewY(-8deg) translateX(50px) translateY(0);
-}
-
-.card-3:hover {
-    transform: skewY(-8deg) translateX(100px) translateY(40px);
-}
-
-.card-header {
-    display: flex;
     align-items: center;
     gap: 0.75rem;
-    position: relative;
-    z-index: 1;
 }
 
-.card-icon-wrapper {
+.social-logo svg {
+    width: 64px;
+    height: 64px;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.social-logo:hover svg {
+    transform: scale(1.1);
+}
+
+.social-logo.instagram svg {
+    fill: #E4405F;
+}
+
+.social-logo.linkedin svg {
+    fill: #0A66C2;
+}
+
+.social-logo.facebook svg {
+    fill: #1877F2;
+}
+
+.social-count {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.social-divider {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #525252;
+}
+
+.social-equals {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #525252;
+    margin-left: 0.5rem;
+}
+
+.social-total {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    padding: 6px;
+    padding-left: 1rem;
 }
 
-.card-icon-wrapper svg {
-    width: 100%;
-    height: 100%;
-    fill: white;
+.total-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
 }
 
-.instagram-bg {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-}
-
-.linkedin-bg {
-    background: #0A66C2;
-}
-
-.facebook-bg {
-    background: #1877F2;
-}
-
-.card-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-}
-
-.instagram-text {
-    color: #E4405F;
-}
-
-.linkedin-text {
-    color: #0A66C2;
-}
-
-.facebook-text {
-    color: #1877F2;
-}
-
-.card-stat {
-    font-size: 1.125rem;
-    color: #e5e5e5;
-    position: relative;
-    z-index: 1;
-}
-
-.card-date {
-    font-size: 0.875rem;
+.total-label {
+    font-size: 1rem;
     color: #737373;
-    position: relative;
-    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .social-message {
@@ -519,22 +443,26 @@ footer {
         padding: 4rem 1rem;
     }
 
-    .display-cards {
-        transform: scale(0.85);
-        margin-bottom: 2rem;
+    .social-logos {
+        gap: 1rem;
     }
 
-    .display-card {
-        width: 280px;
-        height: 120px;
+    .social-logo svg {
+        width: 48px;
+        height: 48px;
     }
 
-    .card-2 {
-        transform: skewY(-8deg) translateX(40px) translateY(35px);
+    .social-count {
+        font-size: 1rem;
     }
 
-    .card-3 {
-        transform: skewY(-8deg) translateX(80px) translateY(70px);
+    .social-divider,
+    .social-equals {
+        font-size: 1.5rem;
+    }
+
+    .total-number {
+        font-size: 2rem;
     }
 
     .how-it-works {
