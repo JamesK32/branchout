@@ -78,9 +78,16 @@ nav {
 }
 
 .rotating-word {
-    display: inline-block;
+    display: inline;
     color: #6366f1;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.typewriter-cursor {
+    display: inline;
+    color: #6366f1;
+    font-weight: 400;
+    margin-left: 2px;
+    transition: opacity 0.1s;
 }
 
 .subtitle {

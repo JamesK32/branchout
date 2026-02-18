@@ -23,7 +23,7 @@
 
     <main>
         <section class="hero">
-            <h1>Humans were meant to <span class="rotating-word"></span></h1>
+            <h1>Humans were meant to <span class="rotating-word"></span><span class="typewriter-cursor">|</span></h1>
             <a href="#" class="app-store-badge">
                 <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
             </a>
@@ -116,27 +116,61 @@
     </footer>
 
     <script>
-        const words = ['connect.', 'bond.', 'interact.', 'engage.', 'relate.', 'meet.'];
-        const rotatingWord = document.querySelector('.rotating-word');
-        let currentIndex = 0;
+        (function() {
+            const words = ['connect.', 'bond.', 'interact.', 'engage.', 'relate.', 'meet.'];
+            const typewriter = document.querySelector('.rotating-word');
+            const speed = 80;
+            const deleteSpeed = 40;
+            const delayBetweenWords = 2000;
 
-        function rotateWord() {
-            rotatingWord.style.opacity = '0';
-            rotatingWord.style.transform = 'translateY(20px)';
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let showCursor = true;
 
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % words.length;
-                rotatingWord.textContent = words[currentIndex];
-                rotatingWord.style.opacity = '1';
-                rotatingWord.style.transform = 'translateY(0)';
-            }, 300);
-        }
+            function type() {
+                const currentWord = words[wordIndex];
 
-        // Initialize
-        rotatingWord.textContent = words[0];
-        rotatingWord.style.opacity = '1';
+                if (!isDeleting) {
+                    // Typing
+                    if (charIndex < currentWord.length) {
+                        typewriter.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                        setTimeout(type, speed);
+                    } else {
+                        // Word complete, wait then delete
+                        setTimeout(() => {
+                            isDeleting = true;
+                            type();
+                        }, delayBetweenWords);
+                    }
+                } else {
+                    // Deleting
+                    if (charIndex > 0) {
+                        typewriter.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                        setTimeout(type, deleteSpeed);
+                    } else {
+                        // Move to next word
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        setTimeout(type, speed);
+                    }
+                }
+            }
 
-        setInterval(rotateWord, 2500);
+            // Cursor blink
+            setInterval(() => {
+                const cursor = document.querySelector('.typewriter-cursor');
+                if (cursor) {
+                    showCursor = !showCursor;
+                    cursor.style.opacity = showCursor ? '1' : '0';
+                }
+            }, 500);
+
+            // Start typing
+            type();
+        })();
     </script>
 </body>
 </html>
