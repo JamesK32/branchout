@@ -108,93 +108,37 @@ nav {
 /* Social Stats Section */
 .social-stats {
     padding: 6rem 2rem;
-    background: #0a0a0a;
-    overflow: hidden;
+    background: #fafafa;
 }
 
-/* Social Logos Inline */
 .social-logos {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto 4rem;
-    padding: 2rem 0;
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
 .social-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .social-logo svg {
-    width: 64px;
-    height: 64px;
-    transition: transform 0.3s, filter 0.3s;
+    width: 32px;
+    height: 32px;
+    fill: #a3a3a3;
 }
 
-.social-logo:hover svg {
-    transform: scale(1.1);
-}
-
-.social-logo.instagram svg {
-    fill: #E4405F;
-}
-
-.social-logo.linkedin svg {
-    fill: #0A66C2;
-}
-
-.social-logo.facebook svg {
-    fill: #1877F2;
-}
-
-.social-count {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.social-divider {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #525252;
-}
-
-.social-equals {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #525252;
-    margin-left: 0.5rem;
-}
-
-.social-total {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 1rem;
-}
-
-.total-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1;
-}
-
-.total-label {
-    font-size: 1rem;
+.social-logo span {
+    font-size: 0.875rem;
     color: #737373;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
 }
 
 .social-message {
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
 }
@@ -203,12 +147,12 @@ nav {
     font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: #ffffff;
+    color: #1a1a1a;
 }
 
 .social-message p {
     font-size: 1.125rem;
-    color: #a3a3a3;
+    color: #525252;
     margin-bottom: 1rem;
     line-height: 1.7;
 }
@@ -216,7 +160,7 @@ nav {
 .social-message .highlight {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #1a1a1a;
     margin-top: 1.5rem;
 }
 
@@ -440,29 +384,20 @@ footer {
     }
 
     .social-stats {
-        padding: 4rem 1rem;
+        padding: 4rem 1.5rem;
     }
 
     .social-logos {
-        gap: 1rem;
+        gap: 2rem;
     }
 
     .social-logo svg {
-        width: 48px;
-        height: 48px;
+        width: 28px;
+        height: 28px;
     }
 
-    .social-count {
-        font-size: 1rem;
-    }
-
-    .social-divider,
-    .social-equals {
-        font-size: 1.5rem;
-    }
-
-    .total-number {
-        font-size: 2rem;
+    .social-logo span {
+        font-size: 0.75rem;
     }
 
     .how-it-works {
